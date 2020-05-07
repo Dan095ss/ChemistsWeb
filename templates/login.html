@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="wrapper">
+        <div class="page-header">
+            <div class="page-header-image"></div>
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 offset-lg-0 offset-md-3">
+                            <div id="square7" class="square square-7"></div>
+                            <div id="square8" class="square square-8"></div>
+                            <div class="card card-register">
+                                <div class="card-header">
+                                    <img class="card-img" src="../../static/img/square1.png" alt="Card image">
+                                    <h4 class="card-title">Login</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form" method="POST" action="/login">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="tim-icons icon-email-85"></i>
+                                                </div>
+                                            </div>
+                                            <input type="email" name="email" placeholder="Your Email" autofocus="" class="form-control">
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="tim-icons icon-lock-circle"></i>
+                                                </div>
+                                            </div>
+                                            <input type="password" name="password" placeholder="Your Password" class="form-control">
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn form-control btn-default">Login</button>
+                                            <i class="icon help"></i>
+                                            Do you not have account? <a href="{{ url_for('auth.signup') }}">Register here</a> instead.
+                                        </div>
+                                    </form>
+                                    {% if error %}
+                                        <div class="alert alert-danger alert-with-icon">
+                                            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                                                <i class="tim-icons icon-simple-remove"></i>
+                                            </button>
+                                            <span data-notify="icon" class="tim-icons icon-support-17"></span>
+                                            <span>
+                                                <b>    Snap! - </b> {{ error }}
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                    {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                        <div class="alert alert-warning warning-with-icon">
+                                            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                                                <i class="tim-icons icon-simple-remove"></i>
+                                            </button>
+                                            <span>
+                                                <b>    Snap! - </b> {{ messages[0] }}
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                    {% endwith %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="register-bg"></div>
+                <div id="square1" class="square square-1"></div>
+                <div id="square2" class="square square-2"></div>
+                <div id="square3" class="square square-3"></div>
+                <div id="square4" class="square square-4"></div>
+                <div id="square5" class="square square-5"></div>
+                <div id="square6" class="square square-6"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
