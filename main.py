@@ -27,6 +27,16 @@ def index():
     return render_template('index.html')
 
 
+@main.route('/calculator_one')
+def calculator_one():
+    return render_template('calculator_one.html')
+
+
+@main.route('/calculator_two')
+def calculator_two():
+    return render_template('calculator_two.html')
+
+
 @main.route('/profile')
 @login_required
 def profile():

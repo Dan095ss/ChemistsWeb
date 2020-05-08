@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- тут должен быть код, отвечабщий за работу мэин страницы(калькуляторы) -->
+    {% if current_user.is_authenticated %}
+        <div class="wrapper">
+            <div class="page-header">
+                <div class="page-header-image"></div>
+                <div class="content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-6 offset-lg-0 offset-md-3">
+                                <div id="square7" class="square square-7"></div>
+                                <div id="square8" class="square square-8"></div>
+                                <div class="card card-register">
+                                    <div class="card-header">
+                                        <img class="card-img" src="../../static/img/square11.png" alt="Card image">
+                                        <h4 class="card-title">Equ., it!</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <form class="form" method="POST" action="/run_balance">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="tim-icons icon-atom"></i>
+                                                    </div>
+                                                </div>
+                                                <input name="equ_first" autofocus="" class="form-control">
+                                            </div>
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn form-control btn-success"><p style="font-weight: bold;">Уравнять</p></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="wrapper">
+            <div class="page-header">
+                <div class="container">
+                    <div class="content-center brand">
+                        <h1 class="h1-seo" style="font-weight: bold; font-family: 'PT Sans', sans-serif;">Предупреждение.</h1>
+                        <h2 style="font-weight: bold; font-family: 'PT Sans', sans-serif;">Для дальнейшего использования калькулятора, вам нужно войти в аккаунт ChemistsWeb</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
