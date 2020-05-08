@@ -114,13 +114,17 @@
           overflow-y: scroll;
           padding: 10px 20px 10px 20px;
       }
+
+      #chat-nav {
+        color: black;
+      }
     </style>
 
     <nav class="navbar fixed-bottom" role="navigation">
       <div class="container">
         <div class="input-group mb-3">
           <input id="chat_text" class="form-control" placeholder="Enter your message" type="text">
-          <button class="btn btn-outline-secondary" type="button" id="chat_btn">Post</button>
+          <button class="btn btn-primary" type="button" id="chat_btn">Post</button>
         </div>
       </div>
     </nav>
@@ -169,14 +173,12 @@
       </div>
       -->
 
-    <div class="modal fade active" data-backdrop="static" id='loginmodal' tabindex="-1" role="dialog">
-      <div class="modal-background"></div>
+    <div class="modal fade active" data-backdrop="static" id='loginmodal' tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="input-group mb-3">
               <input id="username_input" disabled="disabled" class="form-control" type="text" value="{{ name }}">
-              <button id="start_chat" class="btn btn-success">Start Chatting</button>
+              <button id="start_chat" class="btn form-control btn-primary">Приступить к общению</button>
             </div>
           </div>
         </div>

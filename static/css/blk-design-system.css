@@ -5926,7 +5926,7 @@ button.close {
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #ffffff;
+  background-color: #8965e0;
   background-clip: padding-box;
   border: 1px solid rgba(34, 42, 66, 0.2);
   border-radius: 0.2857rem;
@@ -6014,7 +6014,7 @@ button.close {
     height: calc(100vh - (1.75rem * 2));
   }
   .modal-content {
-    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.2), 0 5px 15px rgba(0, 0, 0, 0.17);
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.2), 0 5px 15px #8965e0;
   }
   .modal-sm {
     max-width: 380px;
@@ -13667,7 +13667,7 @@ img {
   padding: 0.9375rem;
   width: 100%;
   z-index: 1050;
-  background: #e14eca;
+  background: #8965e0;
 }
 
 .navbar .photo {

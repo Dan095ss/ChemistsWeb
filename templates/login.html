@@ -39,17 +39,6 @@
                                             Do you not have account? <a href="{{ url_for('auth.signup') }}">Register here</a> instead.
                                         </div>
                                     </form>
-                                    {% if error %}
-                                        <div class="alert alert-danger alert-with-icon">
-                                            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                                                <i class="tim-icons icon-simple-remove"></i>
-                                            </button>
-                                            <span data-notify="icon" class="tim-icons icon-support-17"></span>
-                                            <span>
-                                                <b>    Snap! - </b> {{ error }}
-                                            </span>
-                                        </div>
-                                    {% endif %}
                                     {% with messages = get_flashed_messages() %}
                                     {% if messages %}
                                         <div class="alert alert-warning warning-with-icon">

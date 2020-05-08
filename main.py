@@ -4,6 +4,12 @@ from flask_login import login_required, current_user
 from .models import Message
 from . import db
 
+from .equation import Equation
+from time import sleep
+
+import logging
+import json
+import random
 
 main = Blueprint('main', __name__)
 
@@ -53,4 +59,5 @@ def message():
     except:
 
         return jsonify({'result': 'failure'})
+
 
