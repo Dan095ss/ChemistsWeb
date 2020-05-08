@@ -1,65 +1,194 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-  <title>Pusher Test</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
-</head>
+{% block content %}
 
 <body style="overflow-y:hidden;" class="has-navbar-fixed-bottom">
+    <style type="text/css" media="screen">
 
-  <nav class="navbar is-fixed-bottom" role="navigation" aria-label="main navigation">
-    <div class="container">
-      <div class="navbar-item is-expanded">
+      .chat-box {
+          height: 100%;
+          color: #a1a1a1;
+          margin: 0;
+          padding: 59px 0 90px;
+      }
 
-        <input id="chat_text" class="input" type="text">
-        <a id="chat_btn" class="button is-info">
-          Post
-        </a>
+      .chat-box .msg-box {
+          padding: 12px 0 10px;
+          clear: both;
+      }
 
+      .ellipsis-icon {
+          position: absolute;
+          display: inline-block;
+          visibility: hidden;
+          vertical-align: top;
+      }
+
+      .profile-card {
+          max-width: 220px;
+      }
+
+      .msg-box:hover > .ellipsis-icon {
+          visibility: visible;
+      }
+
+      .picture img {
+          width: 45px;
+          height: 45px;
+          border-radius: 5px;
+      }
+
+      .msg {
+          background: #e14eca;
+          display: inline-block;
+          padding: 12px;
+          width: auto;
+          max-width: 80%;
+          border-radius: 2px;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+          position: relative;
+          overflow-x: auto;
+      }
+
+      .msg img {
+          width: 100%;
+          max-width: 1000px;
+          height: auto;
+      }
+
+      .msg:before {
+          content: "";
+          position: absolute;
+          display: block;
+          left: 0;
+          border-right: 6px solid #ECECEC;
+          border-top: 6px solid transparent;
+          border-bottom: 6px solid transparent;
+          top: 10px;
+          margin-left: -6px;
+      }
+
+      .nickname {
+          color: #555;
+          font-weight: bold;
+      }
+
+      .message-body {
+          display: block;
+          padding-top: 5px;
+          font-size: 14px;
+          color: #222;
+      }
+
+      .input-avatar {
+          position: absolute;
+          float: left;
+          max-height: 60px;
+          max-width: 60px;
+      }
+
+      .input-area {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          height: 95px;
+          width: 100%;
+          background: #f6f6f6;
+          color: #a1a1a1;
+          padding: 10px;
+      }
+
+      .input-area textarea {
+          resize: none !important;
+      }
+
+      /* msgs */
+
+      .chatArea {
+          height: 100%;
+          padding-bottom: 60px;
+      }
+
+      .messages {
+          height: 100%;
+          margin: 0;
+          overflow-y: scroll;
+          padding: 10px 20px 10px 20px;
+      }
+    </style>
+
+    <nav class="navbar fixed-bottom" role="navigation">
+      <div class="container">
+        <div class="input-group mb-3">
+          <input id="chat_text" class="form-control" placeholder="Enter your message" type="text">
+          <button class="btn btn-outline-secondary" type="button" id="chat_btn">Post</button>
+        </div>
       </div>
+    </nav>
+
+    <div class="chat-box">
+      {% for message in messages %}
+      <div class="messages">
+        <div class="msg-box">
+          <div class="msg">
+            <p>
+              <strong>{{ message.username }}</strong>
+              <br> {{ message.message }}
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
 
-  </nav>
-
-  <div id="content" class="container" style="overflow-y:auto; margin-bottom: 100px;">
-
-    {% for message in messages %}
-    <article class="media">
-      <div class="media-content">
-        <div class="content">
-          <p>
-            <strong>{{ message.username }}</strong>
-            <br> {{ message.message }}
-          </p>
+    <!--
+    <div id="content" class="container align-items-center" style="overflow-y:auto; margin-bottom: 100px;">
+      {% for message in messages %}
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{ message.username }}</strong>
+              <br> {{ message.message }}
+            </p>
+          </div>
         </div>
-      </div>
-    </article>
-    {% endfor %}
-  </div>
-
-  <div class="modal is-active">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-
-      <div class="field has-addons">
-        <div class="control is-expanded">
-          <input id="username_input" disabled="disabled" class="input" type="text" value="{{ name }}">
-        </div>
-        <div class="control">
-          <a id="start_chat" class="button is-info">
-            Start Chatting
-          </a>
-        </div>
-      </div>
-
+      </article>
+      {% endfor %}
     </div>
-  </div>
+
+      <div class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+              <div class="modal-background"></div>
+                  <div class="modal-content">
+                      <div class="input-group mb-3">
+                          <input id="username_input" disabled="disabled" class="form-control" type="text" value="{{ name }}">
+                          <button id="start_chat" class="btn btn-success">Start Chatting</button>
+                      </div>
+                  </div>
+          </div>
+      </div>
+      -->
+
+    <div class="modal fade active" data-backdrop="static" id='loginmodal' tabindex="-1" role="dialog">
+      <div class="modal-background"></div>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="input-group mb-3">
+              <input id="username_input" disabled="disabled" class="form-control" type="text" value="{{ name }}">
+              <button id="start_chat" class="btn btn-success">Start Chatting</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
   <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+  <!-- <script src="https://momentjs.com/downloads/moment.js"></script> -->
 
   <script>
 
@@ -67,10 +196,14 @@
 
       let username;
 
+      $(window).on('load',function(){
+          $('#loginmodal').modal('show');
+      });
+
       $('#start_chat').on('click', function() {
 
         username = $('#username_input').val();
-        $('.modal').removeClass('is-active');
+        $('#loginmodal').modal('hide');
 
       });
 
@@ -108,17 +241,11 @@
                                     </div>
                                   </div>
                                 </article>`;
-                                
           $('#content').append(message_template);
-
-        });
-
-      
-      
+      });
     });
-
   </script>
-
 </body>
-
 </html>
+
+{% endblock %}

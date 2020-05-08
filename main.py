@@ -5,7 +5,6 @@ from .models import Message
 from . import db
 
 
-
 main = Blueprint('main', __name__)
 
 pusher_client = pusher.Pusher(
@@ -15,6 +14,7 @@ pusher_client = pusher.Pusher(
   cluster='ap3',
   ssl=True
 )
+
 
 @main.route('/')
 def index():
@@ -28,6 +28,7 @@ def profile():
 
 
 @main.route('/chat')
+@login_required
 def chat():
     messages = Message.query.all()
 
