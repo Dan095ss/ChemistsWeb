@@ -178,7 +178,21 @@
           <div class="modal-body">
               <input id="username_input" disabled="disabled" class="form-control" type="text" value="{{ name }}">
               <button id="start_chat" class="btn form-control btn-primary">Приступить к общению</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="warning_bug" style="color: white;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="alert alert-danger" role="alert">
+              Присутствует баг! После отправки сообщения, оно появляется лишь только при перезагрузке страницы.
             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Закрыть</button>
           </div>
         </div>
       </div>
@@ -204,6 +218,7 @@
 
         username = $('#username_input').val();
         $('#loginmodal').modal('hide');
+        $('#warning_bug').modal('show');
 
       });
 
