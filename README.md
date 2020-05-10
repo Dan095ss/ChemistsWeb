@@ -29,6 +29,6 @@ flask run
 
 ## Meta
 
-Daniil Sevryuk (Dan095ss) – [@YourTwitter](https://twitter.com/dbader_org) – dan095ss2005@yandex.ru
+Daniil Sevryuk (Dan095ss) – dan095ss2005@yandex.ru
 
 [https://github.com/Dan095ss/ChemistsWeb/](https://github.com/Dan095ss/)
