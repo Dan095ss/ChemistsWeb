@@ -3,7 +3,7 @@
 
 ![](mockup1.png)
 
-## Installation
+## Standart Setup
 
 OS X & Linux:
 
@@ -19,7 +19,7 @@ set FLASK_APP=__init__
 flask run
 ```
 
-## Development setup
+## Development Setup
 
 ```sh
 set(export) FLASK_APP=__init__
