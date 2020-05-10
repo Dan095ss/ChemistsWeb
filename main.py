@@ -28,8 +28,19 @@ def index():
 
 
 @main.route('/calculator_one')
-def calculator_one():
+def mn():
     return render_template('calculator_one.html')
+
+
+@main.route('/send', methods=['POST'])
+def send():
+    try:
+        user_input = request.form.get('equ')
+        equation = Equation(user_input)
+        test = 'Сбалансированное уравнение: ' + equation.balance()
+        return render_template('calculator_one.html', total=test)
+    except IndexError:
+        return render_template('calculator_one.html')
 
 
 @main.route('/calculator_two')

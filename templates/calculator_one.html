@@ -18,17 +18,18 @@
                                         <h4 class="card-title">Equ., it!</h4>
                                     </div>
                                     <div class="card-body">
-                                        <form class="form" method="POST" action="/run_balance">
+                                        <form class="form" method="POST" action='/send'>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">
                                                         <i class="tim-icons icon-atom"></i>
                                                     </div>
                                                 </div>
-                                                <input name="equ_first" autofocus="" class="form-control">
+                                                <input name="equ" autofocus="" class="form-control">
                                             </div>
                                             <div class="card-footer">
                                                 <button type="submit" class="btn form-control btn-success"><p style="font-weight: bold;">Уравнять</p></button>
+                                                <a>{{ total }}</a>
                                             </div>
                                         </form>
                                     </div>
