@@ -14,23 +14,28 @@
                                 <div id="square8" class="square square-8"></div>
                                 <div class="card card-register">
                                     <div class="card-header">
-                                        <img class="card-img" src="../../static/img/square11.png" alt="Card image">
+                                        <img class="card-img" src="../../static/img/square111.png" alt="Card image">
                                         <h4 class="card-title">Equ., it!</h4>
                                     </div>
                                     <div class="card-body">
-                                        <form class="form" method="POST" action="/send">
+                                        <form class="form" method="POST" action='/send_t'>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">
                                                         <i class="tim-icons icon-atom"></i>
                                                     </div>
                                                 </div>
-                                                <input name="equ_first" autofocus="" class="form-control">
+                                                <input name="equ_t" autofocus="" class="form-control">
                                             </div>
                                             <div class="card-footer">
                                                 <button type="submit" class="btn form-control btn-success"><p style="font-weight: bold;">Уравнять</p></button>
                                             </div>
                                         </form>
+                                        <div class="{{ t_class }}">
+                                            <span>
+                                                {{ total }}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<body style="overflow-y:hidden;" class="has-navbar-fixed-bottom">
+<body style="overflow-y:auto;" class="has-navbar-fixed-bottom">
     <style type="text/css" media="screen">
 
       .chat-box {
@@ -58,7 +58,6 @@
       .msg:before {
           content: "";
           position: absolute;
-          display: block;
           left: 0;
           border-right: 6px solid #ECECEC;
           border-top: 6px solid transparent;
@@ -111,13 +110,13 @@
       .messages {
           height: 100%;
           margin: 0;
-          overflow-y: scroll;
           padding: 10px 20px 10px 20px;
       }
 
       #chat-nav {
         color: black;
       }
+
     </style>
 
     <nav class="navbar fixed-bottom" role="navigation">
@@ -145,7 +144,7 @@
     </div>
 
     <!--
-    <div id="content" class="container align-items-center" style="overflow-y:auto; margin-bottom: 100px;">
+    <div id="content" class="container" style="overflow-y:auto; margin-bottom: 100px;">
       {% for message in messages %}
       <article class="media">
         <div class="media-content">
@@ -173,7 +172,7 @@
       </div>
       -->
 
-    <div class="modal fade active" data-backdrop="static" id='loginmodal' tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" data-backdrop="static" id='loginmodal' tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body">
@@ -243,6 +242,7 @@
                                   </div>
                                 </article>`;
           $('#content').append(message_template);
+          $('html, body').animate({ scrollTop: message_template }, 600);
       });
     });
   </script>
